@@ -53,4 +53,7 @@ npm install vue
 ```
 > 初始化会产生一个pacakge.json的文件这个文件用来描述项目的依赖，不能有大写 特殊字符 中文，而且不要和安装的包的名字相同
 
+## mvvm
+https://github.com/DMQ/mvvm
+
 
