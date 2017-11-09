@@ -36,7 +36,7 @@
                   <input type="checkbox" v-model="todo.isSelected">
                   {{todo.title}}
                 </span>
-                <input type="text" v-model="todo.title" v-show="cur==todo">
+                <input type="text" v-model="todo.title" v-show="cur==todo" @keyup.enter="cancel" @blur="cancel" v-focus="cur==todo">
                 <button class="pull-right btn btn-danger btn-xs" @click="remove(todo)">&bigotimes;</button>
               </li>
             </ul>

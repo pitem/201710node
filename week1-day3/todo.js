@@ -1,5 +1,13 @@
 const vm = new Vue({
     el:'#app',
+    directives:{
+        focus(el,bindings){
+            //当点击当前li时让内部的输入框获取焦点
+            if(bindings.value){
+                el.focus(); // 获取焦点
+            }
+        }
+    },
     data:{
         todos:[
             {isSelected:false,title:'睡觉'},
@@ -21,6 +29,9 @@ const vm = new Vue({
         },
         remember(todo){//当前传递的是todo（当前点击的这一项）
             this.cur = todo;
+        },
+        cancel(){
+            this.cur = ''
         }
     },
     computed:{
