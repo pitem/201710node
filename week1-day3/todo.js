@@ -5,7 +5,8 @@ const vm = new Vue({
             {isSelected:false,title:'睡觉'},
             {isSelected:false,title:'吃饭'},
         ],
-        title:''
+        title:'',
+        cur:''
     },
     methods:{
         add(){ // keydown/keyup差一个单词，keydown的时候内容没有进入到输入框内
@@ -17,6 +18,9 @@ const vm = new Vue({
         },
         remove(todo){ //拿到当前点击的和数组里的比对相等则返回false即可
             this.todos = this.todos.filter(item=>item!==todo);
+        },
+        remember(todo){//当前传递的是todo（当前点击的这一项）
+            this.cur = todo;
         }
     },
     computed:{
