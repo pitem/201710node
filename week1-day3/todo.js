@@ -11,10 +11,22 @@ const vm = new Vue({
     data:{
         todos:[
             {isSelected:false,title:'睡觉'},
-            {isSelected:false,title:'吃饭'},
+            {isSelected:false,title:'吃饭'}
         ],
         title:'',
         cur:''
+    },
+    created(){ // ajax获取 初始化数据
+        // 如果localStorage中有数据 就用有的没数据 就用默认的
+        this.todos = JSON.parse(localStorage.getItem('data')) || this.todos;
+    },
+    watch:{
+        todos:{ // watch默认只监控一层的数据变化,深度监控
+            handler(){ //默认写成函数 就相当于默认写了个handler
+                //localStorage默认存的是字符串
+                localStorage.setItem('data',JSON.stringify(this.todos));
+            },deep:true
+        }
     },
     methods:{
         add(){ // keydown/keyup差一个单词，keydown的时候内容没有进入到输入框内
@@ -44,6 +56,4 @@ const vm = new Vue({
 // 2.敲回车时添加新数据(需要加入isSelected属性)
 // 3.删除功能
 // 4.计算一下当前没有被选中的个数
-
-
-
+// 笔记总结 (vue react) 尽量md格式
