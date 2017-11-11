@@ -27,7 +27,92 @@ git config --global user.email "你的邮箱"
 - 一个项目初始化一次，不能嵌套
 ```
 git init 告诉git哪个文件夹被git所管理
+git status 查看git状态
 ```
+
+## 删除暂存区
+```
+git rm --cached 文件名
+```
+
+## 添加到暂存区
+```
+git add ./ -A / 文件名
+```
+
+## 添加到历史区
+```
+git commit -m '消息'
+```
+
+## git的对比
+- git diff 工作区和暂存区
+- git diff 分支名 工作区和历史区
+- git diff --cached 暂存取和历史区比较
+
+## 撤销
+- 从暂存区中将工作区内容覆盖掉
+```
+git checkout 文件名
+git reset HEAD 文件名 回到上一次的缓存区
+```
+
+## 回滚历史版本
+```
+git reset --hard 版本号
+git reflog 查看所有版本
+```
+
+## 回滚某个版本的文件
+```
+git checkout 版本号 文件名
+```
+
+## 创建分支
+```
+git branch 分支名
+git branch 查看分支
+```
+
+## 切换分支
+```
+git checkout 分支名
+```
+
+## 删除分支
+```
+git branch -D 分支名
+```
+
+> 删除分支时当前用户不能在当前要删除的分支上
+
+## 创建并切换分支
+```
+git checkout -b dev
+```
+
+> 添加文件到历史区此时两个分支就没关系了
+
+## 文件修改切换分支
+```
+git stash 暂存文件
+git stash pop 还原暂存的内容
+```
+
+> 分支有更改不能直接切换，可以提交更改或者暂存更改，暂存使用过渡区覆盖掉工作
+
+## 合并分支
+```
+git merge 分支名
+```
+
+## echo输入文件内容
+```
+echo '内容' >> 1.txt
+```
+
+## 解决冲突
+## 推送到github
 
 
 ## linux命令
