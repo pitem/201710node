@@ -9,7 +9,7 @@ class Parent{
 class Child extends Parent{ //Child.prototype = Object.create(Parent.prototype)
     constructor(){
         super(); // Parent.call(this) super中的this指向的是child
-        this.drink = '喝酒'
+        this.drink = '喝酒';
     }
 }
 let child = new Child();

@@ -10,18 +10,30 @@ let util = require('util');
 // 4.Object.prototype.toString.call([]) === '[object Array]'
 //console.log(util.isDate(/a/));
 
-// 继承方式
 function Parent() {
     this.smoking = '抽烟';
 }
 Parent.prototype.sleep = '睡觉';
-function Child() {}
+function Child() {
+}
+util.inherits(Child,Parent); // 继承公有
+let child = new Child();
+console.log(child.sleep);
+
+
+// 继承方式
+/*function Parent() {
+    this.smoking = '抽烟';
+}
+
+Parent.prototype.sleep = '睡觉';
+function Child() {}*/
 
 // 只继承公有
 //Object.setPrototypeOf(Child.prototype, Parent.prototype);
 //Child.prototype.__proto__ = Parent.prototype; // 间接继承，链接到父亲上
 //Child.prototype = Object.create(Parent.prototype); //公有属性
-let child = new Child();
+
 // 继承私有+继承公有
 // Child.prototype = new Parent(); // 传参无意义
 // call+Object.create(); extends + super
