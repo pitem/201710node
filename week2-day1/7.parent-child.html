@@ -29,7 +29,7 @@
                   },
               }, // 对象的形式可以进行校验
               // props:['m'], // this.m = 100; 会在当前子组件上声明一个m属性值是父亲的
-              template:'<div>儿子 {{m}}</div>'
+              template:'<div>儿子 {{m}} <button @click="m=800">更改价格</button></div>'
           }
         }
     });
