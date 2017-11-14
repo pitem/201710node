@@ -58,7 +58,7 @@ const vm = new Vue({
             if(this.hash === 'all')  return this.todos;
             if(this.hash === 'finish') return this.todos.filter(item=>item.isSelected);
             if(this.hash === 'unfinish') return this.todos.filter(item=>!item.isSelected);
-            return this.todos;
+            window.location.hash = '/all';
         },
         count(){
             return this.todos.filter(item=>!item.isSelected).length
