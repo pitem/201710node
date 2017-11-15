@@ -18,11 +18,12 @@ Girl.prototype.emit = function (eventName,...args) { //[我，你，他]
     }
 };
 let girl = new Girl();
+let girl1 = new Girl();
 let cry = (who) =>{console.log(who+'哭');};
 let shopping = (who) =>{console.log(who+'购物');};
 let eat = (who) =>{console.log(who+'吃');};
 girl.on('失恋',cry); // {失恋:[cry]}
 girl.on('失恋',eat); // {失恋:[cry,eat]}
 girl.on('失恋',shopping); // {失恋:[cry,eat,shopping]}
-girl.emit('失恋');
+girl1.emit('失恋');
 
