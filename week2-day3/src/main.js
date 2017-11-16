@@ -1,21 +1,20 @@
-let str = require('./a.js');
-import xxx from './b.js';
-console.log(str);
-console.log(xxx);
+import Vue from 'vue';
+// 这样直接引用vue 引用的并不是vue.js 引用的是vue的runtime
+// vue = compiler + runtime (compiler可以编译模板)
+// compiler有6k
+import App from './App.vue';
+new Vue({
+    // render函数的作用是将虚拟dom渲染成真实的dom
+    // createElement返回的是虚拟的dom
+    render:h=>h(App)
+    // ...App
+}).$mount('#app');
 
-let a = b => c=> d=> b+c+d;
-let obj ={school:'zfpx'};
-let obj1 = {age:8};
 
-let newObj = {...obj,...obj1}; // es7语法
-console.log(newObj);
-
-import './index.css'; //引入css
-import './style.less';
-
-// 在js中引入图片需要import,或者写一个线上路径
-import page from './2.jpg';
-console.log(page); // page就是打包后图片的路径
-let img = new Image();
-img.src = page; // 写了一个字符串 webpack不会进行查找
-document.body.appendChild(img);
+/*
+render:function (createElement) {
+    return createElement('h1',[
+        'hello',
+        createElement('span', '一则头条')
+    ]);
+}*/
