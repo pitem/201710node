@@ -12,7 +12,7 @@ let read = util.promisify(fs.readFile);
     console.log(err);
 });*/
 // await后面只能跟随promise 终极解决方案
-async function result () {
+async function result () { //异步问题同步化  content1 content2两个异步进程等待都返回结果后输出
     let content1 = await read('./1.txt','utf8');
     let content2 = await read(content1,'utf8');
     let str = content2+'姜文';

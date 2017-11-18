@@ -1,7 +1,7 @@
 let fs = require('fs');
 // promise resolve成功 reject失败 实例上有个then方法，方法中有两个参数，success，error
 let util = require('util');
-let read = util.promisify(fs.readFile);
+let read = util.promisify(fs.readFile); //将fs.readFile 通过util工具包promisw化
 // 只有promise实例可以调用then
 read('./1.txt','utf8').then(function (data) {
     return read(data,'utf8'); //如果第一个promise中返回了一个promise实例，会把当前执行的结果传到下一个then中
