@@ -1,3 +1,4 @@
+//async await es7语法
 let fs = require('fs');
 let {promisify} = require('util');
 let read = promisify(fs.readFile);
