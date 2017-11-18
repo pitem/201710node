@@ -11,9 +11,9 @@ function makep(url,cb) { // 插入排序
     let urlArr = url.split('/');
     let index = 0;
     function make(p) {
-        if(urlArr.length<index) return; // 终止循环
+        if(urlArr.length<index) return cb(); // 终止循环
         // 在创建之前看是否存在 如果不存在创建，存在继续下一次创建
-        fs.stat(p,function (err) {
+        fs.stat(p,function (err,stats) {
             if(err){
                 fs.mkdir(p,function (err) {
                     if(err)return console.log(err);
