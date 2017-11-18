@@ -1,6 +1,6 @@
 //async await es7语法
 let fs = require('fs');
-let {promisify} = require('util');
+let {promisify} = require('util'); //解构出promisify
 let read = promisify(fs.readFile);
 let school ={};
 /*read('x.txt','utf8').then(data=>{
@@ -12,7 +12,7 @@ read('y.txt','utf8').then(data=>{
 },err=>{
 });*/
 // 调用all方法后 会返回一个新的promise的实例
-/*Promise.all([read('x.txt','utf8'),read('y.txt','utf8')]).then(function (data) { //data是一个数组类型 对应的是和前面请求的顺序相同（会把成功后的结果放到数组中），假如说有一个失败了，就走错误
+/*Promise.all([read('x.txt','utf8'),read('y.txt','utf8')]).then(function (data) { //data是一个数组类型 对应的是和前面请求的顺序相同（会把成功后的结果放到数组中），假如说有一个失败了，就走错误    [Promise.all([read('x.txt','utf8'),read('y.txt','utf8')])  包装成promise实例]
     console.log(data);
 }).catch(err=>{});*/
 async function result() {

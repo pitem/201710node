@@ -17,5 +17,6 @@ async function result () { //异步问题同步化  content1 content2两个异�
     let content2 = await read(content1,'utf8');
     let str = content2+'姜文';
     console.log(str);
+    Buffer.readFile
 }
 result();
