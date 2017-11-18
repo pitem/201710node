@@ -16,7 +16,7 @@ read('y.txt','utf8').then(data=>{
 }).catch(err=>{});*/
 async function result() {
     let [name,age]=await Promise.all([read('x.txt','utf8'),read('y.txt','utf8')]);
-    console.log(name,age)
+    console.log(name,age);
 }
 result();
 // promise解决的问题 1.回调地狱 2.合并异步的返回结果 3.async，await 简化promise写法的 （语法糖）
