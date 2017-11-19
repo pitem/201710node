@@ -10,6 +10,7 @@ http.createServer((req,res)=>{
     if(pathname === '/user'){ // 如果是访问/ user就是对用户的增删改成
         let id = query.id; //在查询参数中取出id 看是否有值 有值就表示操作的是某个
         console.log(req.method); //method方法全部大写
+        console.log(req.headers); // 获取请求头 小写的
         switch (req.method){
             case 'GET':
                 if(!id){ // 查询所有
@@ -31,6 +32,10 @@ http.createServer((req,res)=>{
                     });
                 break;
             case 'DELETE':
+                if(id){
+                    users = users.filter(item=>item.id!=id);
+                    res.end(JSON.stringify({}));
+                }
                 break;
             case 'PUT':
                 break
