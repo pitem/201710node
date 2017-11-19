@@ -14,8 +14,10 @@
   fetch('/clock',{
       method:'GET'
   }).then(function (res) {
+      // return res.text();
       return res.json(); // 转成想要的结果 JSON.parse()
   }).then(function (data) {
+      // clock.innerHTML = data;
       clock.innerHTML = data.time;
   });
   /*setInterval(()=>{
