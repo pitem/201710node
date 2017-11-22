@@ -57,6 +57,20 @@ http.createServer((req,res)=>{
           }
           break;
         case 'POST':
+          let str = '';
+          req.on('data',chunk=>{
+              str+=chunk
+          });
+          req.on('end', () => {
+              let book = JSON.parse(str);
+              read(function (books) { // 添加id
+                book.bookId = books.length?books[books.length-1].bookId+1:1;
+                books.push(book); //将数据放到books中 ，books在内存中
+                write(books,function () {
+                    res.end(JSON.stringify(book));
+                });
+              });
+          });
           break;
         case 'PUT':
           if(id){// 获取了当前要修改的id
