@@ -13,6 +13,11 @@ function read(cb) { //用来读取数据的
     }
   })
 }
+
+function write(data,cb) { // 写入内容
+  fs.writeFile('./book.json',JSON.stringify(data),cb)
+}
+
 http.createServer((req,res)=>{
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
@@ -52,6 +57,12 @@ http.createServer((req,res)=>{
         case 'PUT':
           break;
         case 'DELETE':
+          read(function (books) {
+            books = books.filter(item=>item.bookId !== id);
+            write(books,function () {
+              res.end(JSON.stringify({})); // 删除返回空对象
+            });
+          });
           break
       }
       return
