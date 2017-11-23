@@ -120,8 +120,7 @@ http.createServer((req,res)=>{
     // 读取一个路局
     fs.stat('.'+pathname,function (err,stats) {
       if(err){
-        res.statusCode = 404;
-        res.end('NOT FOUND');
+        fs.createReadStream('index.html').pipe(res);
       }else{
         if(stats.isDirectory()){
           let p = require('path').join('.'+pathname,'./index.html');
