@@ -9,7 +9,7 @@
           :key="index"
           tag="li"
         >
-          <img :src="book.bookCover">
+          <img v-lazy="book.bookCover">
           <div>
             <h4>{{book.bookName}}</h4>
             <p>{{book.bookInfo}}</p>
@@ -60,10 +60,14 @@ export default {
                   if(distance<=0){
                     clearInterval(this.timer1);
                     distance = 0;
+                    scroll.style.top = top+'px';
                     scroll.removeEventListener('touchmove',move);
                     scroll.removeEventListener('touchend',end);
+                    this.books = []; // 先清空数据
+                    this.offset = 0;
+                    this.hasMore = true;
+                    this.getData();
                     return
-
                   }
                   distance -=1;
                   scroll.style.top =top + distance+'px';
@@ -71,8 +75,6 @@ export default {
               };
               scroll.addEventListener('touchmove',move);
               scroll.addEventListener('touchend',end);
-
-
         },false);
     },
     created(){

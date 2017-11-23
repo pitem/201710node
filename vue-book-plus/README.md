@@ -24,3 +24,6 @@ npm install axios vuex bootstrap
 - 默认每次给5条，前端告诉后台现在要从第几条开始给我
 - /page?offset=5
 - 后台返回还要告诉前端是否有更多的数据 hasMore:false
+
+
+## coding split 代码分割
