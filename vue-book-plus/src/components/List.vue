@@ -36,38 +36,42 @@ export default {
         let distance = 0;
         scroll.addEventListener('touchstart',(e)=> {
             // 滚动条在最顶端时 并且当前盒子在顶端时候 才继续走
-            if(scroll.scrollTop !=0&&scroll.offsetTop != top) return;
-            let start = e.touches[0].pageY; //手指点击的开始
-            let move = (e)=>{
-              let current = e.touches[0].pageY;
-              distance = current - start; //求的拉动的距离 负的就不要了
-              if(distance>0){ // 如果大于50了 认为就是50像素
-                if(distance<=50){
-                  scroll.style.top = distance + top +'px';
+            if(scroll.scrollTop !=0 || scroll.offsetTop != top) return
+              let start = e.touches[0].pageY; //手指点击的开始
+              let move = (e)=>{
+                let current = e.touches[0].pageY;
+                distance = current - start; //求的拉动的距离 负的就不要了
+                if(distance>0){ // 如果大于50了 认为就是50像素
+                  if(distance<=50){
+                    scroll.style.top = distance + top +'px';
+                  }else{
+                    distance = 50;
+                    scroll.style.top = top+50+'px';
+                  }
                 }else{
-                  distance = 50;
-                  scroll.style.top = top+50+'px';
+                  // 如果不在考虑范围内 移除掉move和end事件
+                  scroll.removeEventListener('touchmove',move);
+                  scroll.removeEventListener('touchend',end);
                 }
-              }else{
-                // 如果不在考虑范围内 移除掉move和end事件
-                scroll.removeEventListener('touchmove',move);
-                scroll.removeEventListener('touchend',end);
-              }
-            };
-            let end = (e)=>{
+              };
+              let end = (e)=>{
                 clearInterval(this.timer1);
                 this.timer1 = setInterval(()=>{ // 一共distance 每次-1
                   if(distance<=0){
                     clearInterval(this.timer1);
                     distance = 0;
-                    return console.log('获取数据')
+                    scroll.removeEventListener('touchmove',move);
+                    scroll.removeEventListener('touchend',end);
+                    return
+
                   }
                   distance -=1;
                   scroll.style.top =top + distance+'px';
                 },1);
-            };
-            scroll.addEventListener('touchmove',move);
-            scroll.addEventListener('touchend',end);
+              };
+              scroll.addEventListener('touchmove',move);
+              scroll.addEventListener('touchend',end);
+
 
         },false);
     },
