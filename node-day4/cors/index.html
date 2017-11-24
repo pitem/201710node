@@ -7,11 +7,12 @@
 <body>
 <script>
 var xhr = new XMLHttpRequest();
-xhr.open('get','http://localhost:3000/clock',true);
+
+xhr.open('PUT','http://localhost:3000/clock',true);
 xhr.onload = function () {
     console.log(xhr.response)
-}
-xhr.send();
+};
+xhr.send('123123');
 </script>
 </body>
 </html>

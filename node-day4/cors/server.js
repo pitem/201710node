@@ -6,7 +6,13 @@ let path = require('path');
 let mime = require('mime'); //实现类型转化
 http.createServer((req,res)=>{
     let {pathname,query} = url.parse(req.url,true);
-    res.setHeader('Access-Control-Allow-Origin','*');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if(req.method === 'OPTIONS'){
+        res.end();
+    }
     if(pathname === '/clock'){
         return res.end('2017.11.19');
     }
