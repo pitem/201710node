@@ -7,6 +7,8 @@
 <body>
 <div id="app">
     {{a.school}}
+    {{a.age}}
+    {{a.address}}
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
@@ -21,7 +23,7 @@
     // Vue.set = vm.$set
     vm.$set(vm.a,'school',1); //2.此方法可以给对象添加响应式的数据变化
     // 3.替换原对象
-    //vm.a = {school:'zfpx',age:8,address:'xxx'}
+    // vm.a = {school:'zfpx',age:8,address:'xxx'}
 </script>
 </body>
 </html>
