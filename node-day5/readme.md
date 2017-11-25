@@ -47,3 +47,45 @@ req.query 获取请求的参数 问号后面的参数
 ## 文章管理模块
 - 发表文章 /post
 - 删除文章 /delete
+
+## 路由拆分
+```
+let express = require('express');
+let app = express();
+let router = express.Router();
+router.get('/login',fn)
+app.use('/user',router);
+```
+
+## bodyParser
+```
+app.use(bodyParser.json()); // 解析json application/json
+app.use(bodyParser.urlencoded({extented:true})); // 解析表单 application/x-www-form-urlencoded
+```
+
+## ejs（前后端分离不使用ejs）
+```
+app.set('view engine','html');
+app.set('views','static');
+app.engine('html',require('ejs').__express);
+res.render('index',渲染的数据)
+```
+- ejs用法
+```
+<%include '文件名'%>
+<%=变量%>
+<%-转义变量%>
+<%for(var i = 0; i<10;i++){%>
+    <li><%=i%></li>
+<%}%>
+```
+
+## 静态服务中间件
+```
+app.use(express.static('文件夹'))
+```
+
+## 重定向
+```
+res.redirect('路径');
+```

@@ -8,13 +8,13 @@ router.get('/login',function (req,res) {
 router.get('/reg',function (req,res) {
     // path.resolve是根据运行的文件的位置来解析的，所以此时不能用resolve
    /* console.log(path.resolve('../views/reg.html'))*/
-    res.sendFile(path.join(__dirname,'../views/reg.html'))
+    res.sendFile(path.join(__dirname,'../static/reg.html'))
 });
 router.post('/reg',function (req,res) {
-    console.log(req.body);
+    // 开头路径不能是/
+   res.render('aaa/result',{...req.body,arr:[1,2,3,4,5],html:'<h1>我很帅</h1>'})
 });
 router.post('/login',function (req,res) {
-
 });
 module.exports = router;
 
