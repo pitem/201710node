@@ -12,8 +12,7 @@ app.use(function (req,res,next) {
     next();
 });
 app.get('/water',function (req,res) {
-    for(let i = 0 ;i<1000000;i++){
-    }
+    for(let i = 0 ;i<1000000;i++){}
     res.end('water'); // 装饰模式
 });
 
