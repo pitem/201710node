@@ -1,6 +1,7 @@
 import axios from 'axios';
 // 增加默认的请求的路径
 // 拦截器
+axios.defaults.baseURL = 'http://localhost:3000';
 axios.interceptors.response.use((res)=>{
   return res.data; // 在这里统一拦截结果 把结果处理成res.data
 });
