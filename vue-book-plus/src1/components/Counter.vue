@@ -4,6 +4,8 @@
     <br>
     当前：{{$store.state.count}} <br>
     计数器: <button @click="add">+</button>
+
+    {{$store.getters.val}}
   </div>
 </template>
 <script>
@@ -21,7 +23,7 @@
                this.$store.commit(Types.INCREMENT,2)
             },
             minus(){
-                this.$store.commit(Types.DECREMENT)
+               this.$store.commit(Types.DECREMENT)
             }
         },
         computed: {},
