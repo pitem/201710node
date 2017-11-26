@@ -17,7 +17,17 @@ Vue.use(VueLazyload, {
   error: 'http://img1.imgtn.bdimg.com/it/u=3779605030,1222595953&fm=27&gp=0.jpg',
   loading: 'http://img.lanrentuku.com/img/allimg/1212/5-121204193R0-50.gif',
   attempt: 1
-})
+});
+// 在进入路由之前 每一次都会执行此方法,全局钩子,拦截功能
+router.beforeEach(function (to,from,next) {
+  document.title = to.meta.title;
+  if(to.path === '/list'){
+    // next({path:'/add'})
+    next();
+  }else{
+    next();
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({
