@@ -28,11 +28,12 @@ router.beforeEach(function (to,from,next) {
     next();
   }
 });
-
+import store from './store';
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
-})
+});
