@@ -14,7 +14,11 @@
             <h4>{{book.bookName}}</h4>
             <p>{{book.bookInfo}}</p>
             <b>{{book.bookPrice}}</b>
-            <button @click.stop="remove(book.bookId)">删除</button>
+            <div class="btn-list">
+              <button @click.stop="remove(book.bookId)">删除</button>
+              <button @click.stop="addCart(book)">添加</button>
+            </div>
+
           </div>
         </router-link>
       </ul>
@@ -24,7 +28,8 @@
 </template>
 <script>
 import {pagination,removeBook} from '../api';
-import MHeader from '../base/MHeader.vue'
+import MHeader from '../base/MHeader.vue';
+import * as Types from '../store/mutations-type'
 export default {
     data(){
         // offset代表的是偏移量 hasMore 是否有更多  默认不是正在加载
@@ -34,11 +39,13 @@ export default {
         let scroll = this.$refs.scroll; //获取到要拖拽的元素
         let top = scroll.offsetTop;
         let distance = 0;
+        let isMove = false;
         scroll.addEventListener('touchstart',(e)=> {
             // 滚动条在最顶端时 并且当前盒子在顶端时候 才继续走
             if(scroll.scrollTop !=0 || scroll.offsetTop != top) return
               let start = e.touches[0].pageY; //手指点击的开始
               let move = (e)=>{
+                isMove = true;
                 let current = e.touches[0].pageY;
                 distance = current - start; //求的拉动的距离 负的就不要了
                 if(distance>0){ // 如果大于50了 认为就是50像素
@@ -55,6 +62,8 @@ export default {
                 }
               };
               let end = (e)=>{
+                if(!isMove)return;
+                isMove = false;
                 clearInterval(this.timer1);
                 this.timer1 = setInterval(()=>{ // 一共distance 每次-1
                   if(distance<=0){
@@ -81,6 +90,9 @@ export default {
       this.getData();
     },
     methods: {
+        addCart(book){
+          this.$store.commit(Types.ADD_CART,book)
+        },
         loadMore(){
             // 卷去的高度   当前可见区域  总高
           // 触发scroll事件 可能触发n次  先进来开一个定时器，下次触发时将上一次定时器清除掉
@@ -150,5 +162,9 @@ export default {
     line-height: 30px;
     text-align: center;
     font-size: 20px;
+  }
+  .btn-list{
+    display: flex;
+    justify-content: space-around;
   }
 </style>
