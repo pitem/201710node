@@ -9,12 +9,12 @@
 <div id="app"></div>
 
 <script src="node_modules/vue/dist/vue.js"></script>
-<script src="4.promise-ajax.js"></script>
+<script src="promise/4.promise-ajax.js"></script>
 <script>
   let vm = new Vue({
       el:'#app',
       created(){
-        ajax({url:'./cart.json'}).then((res)=>{
+        ajax({url:'./carts.json'}).then((res)=>{
           console.log(res)
         },(err)=>{
           console.log(err)
