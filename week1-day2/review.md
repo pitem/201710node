@@ -3,8 +3,9 @@
 - {{a}} 取值表达式，通过{{}}来进行取值,默认可以不写this，表达式 赋值运算 计算 三元表达式
 尽量少写逻辑（computed）
 
-### 指令：
+### [指令](https://cn.vuejs.org/v2/api/#v-on)：
 - dom元素的行间属性，vue提供了内置的指令，必须v-开头，后面的值均为变量
+    - v-on 绑定事件监听器。
     - v-model (表单元素) 忽略掉value,checked,selected,将数据绑定的视图上，视图修改后会影响数据的变化
     - v-text 取代{{}} v-cloak 解决闪烁（块）问题,后期都可以不采用，使用v-cloak要加样式
     - v-once 绑定一次，数据在变化不会导致视图刷新，写在不想刷新的标签上
@@ -24,6 +25,4 @@
 ```
 npm install vue axios bootstrap
 ```
-
-
 

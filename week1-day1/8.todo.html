@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-    <!--modifiers-->
+    <!--modifiers 修饰符 | @keyup.ctrl.enter 键盘修饰符 | 输入 enter 以后 调用 add-->
     <input type="text" v-model="val" @keyup.ctrl.enter="add">
     <ul>
         <li v-for="(a,index) in arr">{{a}} <button @click="remove(index)">删除</button></li>
@@ -21,6 +21,7 @@
                 this.arr.unshift(this.val);
                 this.val = '';
             },
+            // remove 参数i, 指示数组的索引
             remove(i){this.arr = this.arr.filter((item,index)=>index!==i)}
         },
         data:{
